@@ -2,53 +2,56 @@
 number_missed = 0
 number_correct = 0
 questions = [
-	"How many inputs need to be high for the output of an AND gate to be high?",
-	"Fill in the blank: A timing chart is used to visualize the _______.",
-	"True or False (T/F): When the input of an inverter is high, the output is high.",
-	"Which of the following does a transistor act as?",
-	"True or False (T/F): The columns on a bread board are electrically the same.",
-	"What is a four bit counter used for?,
-	"True or False (T/F): SR flip flops only have a set pin and nothing else.",
-	"Which of the following is not true about JK flip flop?",
-	"Do D flip flops store data automatically?",
-	"Which of the following is the correct number of inputs that have to be high for the output of an OR gate to be hight",
-options = [
-	["A: one of them", "B: two of them", "C: neither of them"],
-	["A: clock", "B: watch", "C: binary number"],
-	["A: True","B: False", "C: Neither"],
-	["A: CLK", "B: NOR gate", "C: Switch or Amplifier"],
-	["A: True", "B: False", "C: Neither"],
-	["A: A way to convert Decimal to Octal","B: Play music", "C: Count"],
-	["A: True", "B: False", "C: Neither"],
-	["A: The J stands for Just and the K stands for Kidding", "B: they fallow to same basic idea of SR flip flops", "C: They can be configured to work like D flip flops"],
-	["A: Yes", "B: No", "C: Sometimes"],
-	["A: 3", "B: 2", "C: 1"],
-	]
-correct_options = [
-	"B",
-	"A",
-	"B",
-	"C",
-	"C",
-	"B",
-	"A",
-	"A",
-	"C",
+	["How many inputs need to be high for the output of an AND gate to be high?"],
+	["Fill in the blank: A timing chart is used to visualize the _______."],
+	["True or False: When the input of an inverter is high, the output is high."],
+	["Which of the following does a transistor act as?"],
+	["True or False: The columns on a bread board are electrically the same."],
+	["What is a four bit counter used for?"],
+	["True or False: SR flip flops only have a set pin and nothing else."],
+	["Which of the following is not true about JK flip flop?"],
+	["Do D flip flops store data automatically?"],
+	["Which of the following is the correct number of inputs that have to be high for the output of an OR gate to be hight"],
 ]
+options = [
+	["A: one of them, B: two of them, C: neither of them"],
+	["A: clock, B: watch, C: binary number"],
+	["A: True, B: False, C: Neither"],
+	["A: CLK, B: NOR gate, C: Switch or Amplifier"],
+	["A: True, B: False, C: Neither"],
+	["A: A way to convert Decimal to Octal, B: Play music, C: Count"],
+	["A: True, B: False, C: Neither"],
+	["A: The J stands for Just and the K stands for Kidding, B: they fallow to same basic idea of SR flip flops, C: They can be configured to work like D flip flops"],
+	["A: Yes, B: No, C: Sometimes"],
+	["A: 3, B: 2, C: 1"]
+]
+correct_options = [
+	["B"],
+	["A"],
+	["B"],
+	["C"],
+	["C"],
+	["B"],
+	["A"],
+	["A"],
+	["C"],
+]
+Question_num=0
+
 options[1][1]
 
 print("starting the Quiz: ")
 #runs loop until the user misses 3 questions
-while number < 3:
-	nextQuestion == number_missed + number_correct
-	nextoption == number_missed + number_correct
-	nextcorrect_options == number_missed + number_correct
-	print(questions[nextQuestion]
-	print(nextoption)
-	userAnswer == input("Please input your best guess, either A, B, C")
-	if userAnswer == nextcorrect_options 
-		add( number_correct + 1)
-	else
-		add( number_missed + 1)
-	if number_missed == 3 
-		import sys.exit()
+while number_missed < "3":
+	print(questions[Question_num])
+	print(options[Question_num])
+print("Please input your best guess, either A, B, C")
+userAnswer = input("")
+if userAnswer == (correct_options[Question_num]): 
+   add( number_correct + 1)
+   print("Correct!")
+	print("Current score is (number_correct)")
+elif userAnswer!= (correct_options[Question_num]):
+    add( number_missed + 1)
+    print("Incorrect")
+	print("Current score is (number_correct)")
