@@ -40,4 +40,15 @@ options[1][1]
 print("starting the Quiz: ")
 #runs loop until the user misses 3 questions
 while number < 3:
-	nextQuestion = number_missed + number_correct
+	nextQuestion == number_missed + number_correct
+	nextoption == number_missed + number_correct
+	nextcorrect_options == number_missed + number_correct
+	print(questions[nextQuestion]
+	print(nextoption)
+	userAnswer == input("Please input your best guess, either A, B, C")
+	if userAnswer == nextcorrect_options 
+		add( number_correct + 1)
+	else
+		add( number_missed + 1)
+	if number_missed == 3 
+		import sys.exit()
