@@ -1,57 +1,60 @@
-#initialize variables
+# Initialize variables
 number_missed = 0
 number_correct = 0
 questions = [
-	["How many inputs need to be high for the output of an AND gate to be high?"],
-	["Fill in the blank: A timing chart is used to visualize the _______."],
-	["True or False: When the input of an inverter is high, the output is high."],
-	["Which of the following does a transistor act as?"],
-	["True or False: The columns on a bread board are electrically the same."],
-	["What is a four bit counter used for?"],
-	["True or False: SR flip flops only have a set pin and nothing else."],
-	["Which of the following is not true about JK flip flop?"],
-	["Do D flip flops store data automatically?"],
-	["Which of the following is the correct number of inputs that have to be high for the output of an OR gate to be hight"],
+    "How many inputs need to be high for the output of an AND gate to be high?",
+    "Fill in the blank: A timing chart is used to visualize the _______.",
+    "True or False: When the input of an inverter is high, the output is high.",
+    "Which of the following does a transistor act as?",
+    "True or False: The columns on a bread board are electrically the same.",
+    "What is a four bit counter used for?",
+    "True or False: SR flip flops only have a set pin and nothing else.",
+    "Which of the following is not true about JK flip flop?",
+    "Do D flip flops store data automatically?",
+    "Which of the following is the correct number of inputs that have to be high for the output of an OR gate to be high?"
 ]
 options = [
-	["A: one of them, B: two of them, C: neither of them"],
-	["A: clock, B: watch, C: binary number"],
-	["A: True, B: False, C: Neither"],
-	["A: CLK, B: NOR gate, C: Switch or Amplifier"],
-	["A: True, B: False, C: Neither"],
-	["A: A way to convert Decimal to Octal, B: Play music, C: Count"],
-	["A: True, B: False, C: Neither"],
-	["A: The J stands for Just and the K stands for Kidding, B: they fallow to same basic idea of SR flip flops, C: They can be configured to work like D flip flops"],
-	["A: Yes, B: No, C: Sometimes"],
-	["A: 3, B: 2, C: 1"]
+    ["A: one of them", "B: two of them", "C: neither of them"],
+    ["A: clock", "B: watch", "C: binary number"],
+    ["A: True", "B: False", "C: Neither"],
+    ["A: CLK", "B: NOR gate", "C: Switch or Amplifier"],
+    ["A: True", "B: False", "C: Neither"],
+    ["A: A way to convert Decimal to Octal", "B: Play music", "C: Count"],
+    ["A: True", "B: False", "C: Neither"],
+    ["A: The J stands for Just and the K stands for Kidding", "B: they follow the same basic idea of SR flip flops", "C: They can be configured to work like D flip flops"],
+    ["A: Yes", "B: No", "C: Sometimes"],
+    ["A: 3", "B: 2", "C: 1"]
 ]
-correct_options = [
-	["B"],
-	["A"],
-	["B"],
-	["C"],
-	["C"],
-	["B"],
-	["A"],
-	["A"],
-	["C"],
-]
-Question_num=0
+correct_options = ["B", "A", "B", "C", "B", "C", "B", "A", "B", "C"]
 
-options[1][1]
+print("Starting the Quiz:")
 
-print("starting the Quiz: ")
-#runs loop until the user misses 3 questions
-while number_missed < "3":
-	print(questions[Question_num])
-	print(options[Question_num])
-print("Please input your best guess, either A, B, C")
-userAnswer = input("")
-if userAnswer == (correct_options[Question_num]): 
-   add( number_correct + 1)
-   print("Correct!")
-	print("Current score is (number_correct)")
-elif userAnswer!= (correct_options[Question_num]):
-    add( number_missed + 1)
-    print("Incorrect")
-	print("Current score is (number_correct)")
+# Runs quiz until the user misses 3 questions or answers all of the questions.
+for question_num in range(len(questions)):
+    if number_missed >= 3:
+        break
+
+    print(f"\nQuestion {question_num + 1}:")
+    print(questions[question_num])
+    for option in options[question_num]:
+        print(option)
+  
+  #Asks the user to input their answer and checks there answer  
+    while True:
+        print("Please input your best guess (A, B, or C):")
+        user_answer = input("").upper()
+        if user_answer in ['A', 'B', 'C']:
+            break
+        else:
+            print("Invalid input. Please enter either A, B, or C.")
+
+    if user_answer == correct_options[question_num]:
+        number_correct += 1
+        print("Correct!")
+    else:
+        number_missed += 1
+        print(f"Incorrect. The correct answer was {correct_options[question_num]}.")
+    
+    print(f"The current score is {number_correct}")
+
+print(f"\nThe quiz has ended. Your final score is: {number_correct} out of {question_num + 1}")
