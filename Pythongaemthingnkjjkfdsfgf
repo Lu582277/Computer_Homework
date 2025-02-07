@@ -1,1 +1,50 @@
+import random
+import time
+
+players = [{"Name": "Computer1", "Tokens": 10}, 
+           {"Name": "Computer2", "Tokens": 10}, 
+           {"Name": "Computer3", "Tokens": 10}]
+
+def roll_dice(players): 
+    scores = []
+    for i in range(0, len(players)): 
+        scores.append(random.randint(1, 6) + random.randint(1, 6))
+    #Comment out
+    print("scores = ", scores)
+    return scores
+
+def get_round_winner(scores): 
+    maximum = scores[0]
+    winner_index = 0
+    for i in range(0, len(scores)): 
+        if scores[i] > maximum: 
+            maximum = scores[i]
+            winner_index = i
+    # comment out
+    print("max score = ", maximum)
+    return winner_index
+
+def update_tokens(winner, players, scores): 
+    for i in range(0, len(players)): 
+        if i == winner: 
+            players[i]["Tokens"] = players[i]["Tokens"] + len(players) - 1
+        else:
+            players[i]["Tokens"] = players[i]["Tokens"] - 1
+    
+    print("Players = ", players)
+
+def print_scores (players, scores):
+  print("Computer one's current score = ", players["Computer1", "Tokens"])
+  print("Computer two's current score = ", players["Computer2", "Tokens"])
+  print("Computer three's current score = ", players["Computer3", "Tokens"])
+
+#in the end comment out all prints in functions
+# for testing
+scores = roll_dice(players)
+winner = get_round_winner(scores)
+update_tokens(winner, players, scores)
+
+winner = get_round_winner(scores)
+update_tokens(winner, players, scores)
+
 
