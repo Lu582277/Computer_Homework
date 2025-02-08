@@ -47,8 +47,12 @@ try:
                                  print("Please input the number of players playing. Either 1, 2, or 3")
                                  num_of_Players = int(input(""))
                                  try:
-                                 player_input = True
-
+                                            if num_of_Players == 1, 2, 3
+                                            player_input = True
+                                 except ValueError:
+                                            print(please enter 1, 2, or 3)
+                                            continue
+                      while not
 
 #in the end comment out all prints in functions
 # for testing
