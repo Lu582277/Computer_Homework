@@ -38,10 +38,16 @@ def print_scores (players, scores):
   print("Computer two's current score = ", players["Computer2", "Tokens"])
   print("Computer three's current score = ", players["Computer3", "Tokens"])
 
+num_of_Players_flag = False
+
 def start_game (players, scores, update_tokens, winner, get_round_winner, roll_dice):
-           print("Please input the number of players playing. Either 1, 2, or 3")
-           num_of_Players = int(input(""))
-           player_input = True
+try:
+           while True:
+                      while not num_of_Players_flag:
+                                 print("Please input the number of players playing. Either 1, 2, or 3")
+                                 num_of_Players = int(input(""))
+                                 try:
+                                 player_input = True
 
 
 #in the end comment out all prints in functions
