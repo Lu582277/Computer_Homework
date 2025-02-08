@@ -31,7 +31,7 @@ def update_tokens(winner, players, scores):
         else:
             players[i]["Tokens"] = players[i]["Tokens"] - 1
     
-    print("Players = ", players)
+#   print("Players = ", players)
 
 def print_scores (players, scores):
   print("Computer one's current score = ", players["Computer1", "Tokens"])
@@ -53,17 +53,24 @@ try:
                                  except ValueError:
                                             print(please enter 1, 2, or 3)
                                             continue
-                      while not name_flag: 
-                                 print(What would you like to name them?)
 
+                      roll_dice(players)
+                      get_round_winner(scores)
+                      update_tokens(winner, players, scores)
+                      print_scores(players, scores)           
+                      
+except KeyboardInterrupt:
+           print("The end!")
 
 #in the end comment out all prints in functions
 # for testing
-scores = roll_dice(players)
-winner = get_round_winner(scores)
-update_tokens(winner, players, scores)
+#scores = roll_dice(players)
+#winner = get_round_winner(scores)
+#update_tokens(winner, players, scores)
 
-winner = get_round_winner(scores)
-update_tokens(winner, players, scores)
+#winner = get_round_winner(scores)
+#update_tokens(winner, players, scores)
+
+
 
 
