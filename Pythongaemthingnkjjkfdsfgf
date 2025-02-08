@@ -39,6 +39,7 @@ def print_scores (players, scores):
   print("Computer three's current score = ", players["Computer3", "Tokens"])
 
 num_of_Players_flag = False
+name_flag = False
 
 def start_game (players, scores, update_tokens, winner, get_round_winner, roll_dice):
 try:
@@ -52,7 +53,9 @@ try:
                                  except ValueError:
                                             print(please enter 1, 2, or 3)
                                             continue
-                      while not
+                      while not name_flag: 
+                                 print(What would you like to name them?)
+
 
 #in the end comment out all prints in functions
 # for testing
