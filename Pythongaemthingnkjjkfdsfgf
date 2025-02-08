@@ -1,65 +1,125 @@
 import random
 import time
 
+winner = None  # Changed from list to single value
 players = [{"Name": "Computer1", "Tokens": 10}, 
            {"Name": "Computer2", "Tokens": 10}, 
            {"Name": "Computer3", "Tokens": 10}]
 
 def roll_dice(players): 
     scores = []
-    for i in range(0, len(players)): 
+    for _ in range(len(players)): 
         scores.append(random.randint(1, 6) + random.randint(1, 6))
-    #Comment out
-    print("scores = ", scores)
     return scores
 
 def get_round_winner(scores): 
-    maximum = scores[0]
-    winner_index = 0
-    for i in range(0, len(scores)): 
-        if scores[i] > maximum: 
-            maximum = scores[i]
-            winner_index = i
-    # comment out
-    print("max score = ", maximum)
+    maximum = max(scores)
+    winner_index = scores.index(maximum)
     return winner_index
 
-def update_tokens(winner, players, scores): 
-    for i in range(0, len(players)): 
+def update_tokens(winner, players): 
+    for i in range(len(players)): 
         if i == winner: 
-            players[i]["Tokens"] = players[i]["Tokens"] + len(players) - 1
-        else:
-            players[i]["Tokens"] = players[i]["Tokens"] - 1
+            players[i]["Tokens"] += len(players) - 1
+        else: 
+            players[i]["Tokens"] -= 1
+
+def print_scores(players): 
+    for player in players: 
+        print(f"{player['Name']}'s current tokens = {player['Tokens']}")
+
+def start_game(players): 
+    print("Please input the number of players that are playing. Either 1, 2, or 3.")
+    num_of_players = int(input(""))
+    player_input = True
+    time.sleep(1)  # Add a small delay between rounds
+
+# Start the game
+scores = roll_dice(players)  # Assign the returned scores to a variable
+winner = get_round_winner(scores)  # Assign the winner to a variable
+update_tokens(winner, players)  # Remove scores argument as it's not used in the function
+print_scores(players)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#import random
+#import time
+
+#players = [{"Name": "Computer1", "Tokens": 10}, 
+    ##       {"Name": "Computer2", "Tokens": 10}, 
+         #  {"Name": "Computer3", "Tokens": 10}]
+
+#def roll_dice(players): 
+ #   scores = []
+#    for i in range(0, len(players)): 
+  #      scores.append(random.randint(1, 6) + random.randint(1, 6))
+   # #Comment out
+ #   print("scores = ", scores)
+ #   return scores#
+
+#def get_round_winner(scores): 
+ #   maximum = scores[0]
+ #   winner_index = 0
+  #  for i in range(0, len(scores)): 
+   #     if scores[i] > maximum: 
+   #         maximum = scores[i]#
+      #      winner_index = i
+    # comment out
+#    print("max score = ", maximum)
+#    return winner_index
+
+##-def update_tokens(winner, players, scores): 
+ #   for i in range(0, len(players)): #
+    #    if i == winner: #
+  #          players[i]["Tokens"] = players[i]["Tokens"] + len(players) - 1
+    #    else:
+  #          players[i]["Tokens"] = players[i]["Tokens"] - 1
     
 #   print("Players = ", players)
 
-def print_scores (players, scores):
-  print("Computer one's current score = ", players["Computer1", "Tokens"])
-  print("Computer two's current score = ", players["Computer2", "Tokens"])
-  print("Computer three's current score = ", players["Computer3", "Tokens"])
+#def print_scores (players, scores):
+##  print("Computer one's current score = ", players["Computer1", "Tokens"])#
+ ## print("Computer two's current score = ", players["Computer2", "Tokens"])
+#  print("Computer three's current score = ", players["Computer3", "Tokens"])
+#
+#num_of_Players_flag = False
+#name_flag = False
 
-num_of_Players_flag = False
-name_flag = False
-
-def start_game (players, scores, update_tokens, winner, get_round_winner, roll_dice):
-try:
-           while True:
-                      while not num_of_Players_flag:
-                                 print("Please input the number of players playing. Either 1, 2, or 3")
-                                 num_of_Players = int(input(""))
-                                 try:
-                                            if num_of_Players == 1, 2, 3
-                                            player_input = True
-                                 except ValueError:
-                                            print(please enter 1, 2, or 3)
-                                            continue
-
-                      roll_dice(players)
-                      get_round_winner(scores)
-                      update_tokens(winner, players, scores)
-                      print_scores(players, scores)           
+##def start_game (players, scores, update_tokens, winner, get_round_winner, roll_dice):
+#try:
+           #while True:
+                     # while not num_of_Players_flag:
+                     #            print("Please input the number of players playing. Either 1, 2, or 3")
+                              #   num_of_Players = int(input(""))
+                               #  try:#
+                                          #  if num_of_Players == 1, 2, 3
+                                           # player_input = True
+                             #    except ValueError:
+                           #                 print(please enter 1, 2, or 3)
+                            #                continue
+#
+                     # roll_dice(players)
+                   #   get_round_winner(scores)
+                #       update_tokens(winner, players, scores)#
+                     # print_scores(players, scores)           
                       
-except KeyboardInterrupt:
+#except KeyboardInterrupt:
            print("The end!")
 
 #in the end comment out all prints in functions
