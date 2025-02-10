@@ -31,6 +31,101 @@ def update_tokens(get_round_winner, players):
         else: 
             players[i]["Tokens"] -= 1
         
+        if players[i]["Tokens"] == 0:
+            no_more = players[i]["Tokens"] == 0
+            remove = players.index(no_more)
+            players.pop(remove)
+    print(f"{players}")
+
+def print_scores(players): 
+    for i in range(len(players)): 
+        print(f"{players[i]['Name']}'s current tokens = {players[i]['Tokens']}")
+        
+def print_winner(scores, winner):
+    print(f"{players[winner]['Name']} won this round")
+
+def start_game(players, print_winner, roll_dice, print_scores, get_round_winner, update_tokens):
+    user_number = False
+    acceptable_numbers = [1,2,3]
+    print("Please input the number of players that are playing. Either 1, 2, or 3:")
+    num_of_players = int(input(""))
+   # player_input = True
+    if num_of_players in acceptable_numbers:
+        print("Good job!")
+        user_number = True
+    else:
+      #  print("Please retry. Make sure to use 1, 2, or 3: ")
+      #  num_of_players = int(input(""))
+       # acceptable_numbers
+       # user_number = False
+        while not user_number:
+            print("Please retry. Make sure to use 1, 2, or 3: ")
+            num_of_players = int(input(""))
+            if num_of_players in acceptable_numbers:
+                user_number = True
+            else: 
+                continue
+    while user_number == True:
+        roll_dice(players)
+        get_round_winner(scores)
+        update_tokens(get_round_winner, players)
+        print_scores(players)
+        print_winner(scores,winner)
+
+
+
+
+#print_winner(scores, winner)            
+
+# Start the game
+start_game(players, print_winner, roll_dice, print_scores, get_round_winner, update_tokens)
+#scores = roll_dice(players)  # Assign the returned scores to a variable
+#winner = get_round_winner(scores)  # Assign the winner to a variable
+#update_tokens(get_round_winner, players)  # Remove scores argument as it's not used in the function
+#print_scores(players)
+
+
+
+
+
+
+
+
+
+
+import random
+import time
+#scores = roll_dice(players)
+players = [{"Name": "Computer1", "Tokens": 10}, 
+           {"Name": "Computer2", "Tokens": 10}, 
+           {"Name": "Computer3", "Tokens": 10}]
+
+def roll_dice(players): 
+    scores = []
+    for _ in range(0, len(players)): 
+        scores.append(random.randint(1, 6) + random.randint(1, 6))
+    return scores
+
+scores = roll_dice(players)
+
+def get_round_winner(scores): 
+    maximum = scores[0]
+    for i in range(0, len(scores)):
+              if scores[i] > maximum: 
+                      maximum = scores[i]
+                      
+    winner = i
+    return winner
+
+winner = get_round_winner(scores)
+
+def update_tokens(get_round_winner, players): 
+    for i in range(len(players)): 
+        if i == winner: 
+            players[i]["Tokens"] += len(players) - 1
+        else: 
+            players[i]["Tokens"] -= 1
+        
         remove = players.index(players[i]["Tokens"] == 0)
         players.pop(remove)
         print(f"{players}")
