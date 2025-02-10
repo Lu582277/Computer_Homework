@@ -30,17 +30,18 @@ def print_scores(players):
     for player in players: 
         print(f"{player['Name']}'s current tokens = {player['Tokens']}")
 
-acceptable_numbers = [1,2,3]
+
 def start_game(players): 
-    print("Please input the number of players that are playing. Either 1, 2, or 3.")
+    acceptable_numbers = [1,2,3]
+    print("Please input the number of players that are playing. Either 1, 2, or 3:")
     num_of_players = int(input(""))
-    player_input = True
-    if num_of_players in [1,2,3]:
+   # player_input = True
+    if num_of_players in acceptable_numbers:
         print("Good job!")
     else:
         print("Please retry. Make sure to use 1, 2, or 3: ")
-        int(input(""))
-        acceptable_numbers = [1,2,3]
+        num_of_players = int(input(""))
+        acceptable_numbers
         user_number = False
         while not user_number:
             num_of_players = int(input(""))
@@ -49,6 +50,15 @@ def start_game(players):
             else: 
                 continue
             
+
+# Start the game
+start_game(players)
+scores = roll_dice(players)  # Assign the returned scores to a variable
+winner = get_round_winner(scores)  # Assign the winner to a variable
+#update_tokens(winner, players)  # Remove scores argument as it's not used in the function
+#print_scores(players)
+
+
 
 # Start the game
 start_game(players)
