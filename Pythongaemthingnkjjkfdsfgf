@@ -32,9 +32,7 @@ def update_tokens(get_round_winner, players):
             players[i]["Tokens"] -= 1
         
         if players[i]["Tokens"] == 0:
-            no_more = players[i]["Tokens"] == 0
-            remove = players.index(no_more)
-            players.pop(remove)
+            players.pop(i)
     print(f"{players}")
 
 def print_scores(players): 
