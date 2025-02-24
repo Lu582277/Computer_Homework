@@ -1,47 +1,38 @@
+
 import random
+
 # Functions
 def RANDOM_GENERATOR():
-	n = 5
-	li = random.sample(range(1,10), n)
-	return(li)
-
+    n = 5
+    li = random.sample(range(1, 10), n)
+    return li
 
 def find_max(nums):
-	print(nums)
-	maximum = nums[0]
-	for i in range(1, len(nums)):
-		if nums[i] > maximum:
-			maximum = nums[i]
-	print("The largest number is: ", maximum)
-	return(maximum)
+    print(nums)
+    maximum = nums[0]
+    for i in range(1, len(nums)):
+        if nums[i] > maximum:
+            maximum = nums[i]
+    print("The largest number is: ", maximum)
+    return maximum
 
-
-Go_Back = False
 NUMSFLAG = False
 while not NUMSFLAG:
-	nums = []
-	print("Please enter how long you want the list to be:")
-	x = int(input())
-	print("Please input each number one at a time:")
-	for i in range(0,x): 
-		print("For the {i}st/nd/rd/th number input it here:")
-		n=input()
-		while not Go_Back:
-			try:
-				int(n)
-			except:
-		        	print("Please remember to only use intergers.")
-				Go_Back = True
-		nums.append(n)
-		NUMSFLAG = True
-#	except NameError:
-#		print("You have an undefined variable. Please try again with NUMBERS")	
-#		# call hypothetical generator function here
-#		print("Generating a list of 5 integers.")
-#		nums = RANDOM_GENERATOR()
-#		NUMSFLAG = True
-#	except:
-#		("Remember to use only NUMBERS and try again.")
-
+    nums = []
+    print("Please enter how long you want the list to be: ")
+    x = int(input())
+    print("Please input each number one at a time: ")
+    for i in range(x):
+        print(f"For the {i+1}{'st' if i == 0 else 'nd' if i == 1 else 'rd' if i == 2 else 'th'} number input it here: ")
+        while True:
+            n = input()
+            try:
+                nums.append(int(n))
+                break
+            except ValueError:
+                print("Please remember to only use integers and try again:")
+    NUMSFLAG = True
 
 find_max(nums)
+
+
