@@ -1,9 +1,13 @@
-print("Please enter the list of NUMBERS you wish to find the largest number from: ")
-#user will edit list here
-nums = [5,7,435,4]
+import random
+# Functions
+def RANDOM_GENERATOR():
+	n = 5
+	li = random.sample(range(1,10), n)
+	return(li)
 
 
 def find_max(nums):
+	print(nums)
 	maximum = nums[0]
 	for i in range(1, len(nums)):
 		if nums[i] > maximum:
@@ -11,4 +15,32 @@ def find_max(nums):
 	print("The largest number is: ", maximum)
 	return(maximum)
 
+
+NUMSFLAG = False
+while not NUMSFLAG:
+	try:
+		nums = [5,7,435,4]
+		NUMSFLAG = True
+	except NameError:
+		print("You have an undefined variable. Please try again with NUMBERS")	
+		# call hypothetical generator function here
+		print("Generating a list of 5 integers.")
+		nums = RANDOM_GENERATOR()
+		NUMSFLAG = True
+	except:
+		("Remember to use only NUMBERS and try again.")
+
+
 find_max(nums)
+
+
+
+
+
+
+
+
+#print("Please enter the list of NUMBERS you wish to find the largest number from: ")
+#user will edit list here
+#nums = [5,7,435,4]
+#####
