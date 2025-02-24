@@ -16,31 +16,32 @@ def find_max(nums):
 	return(maximum)
 
 
+Go_Back = False
 NUMSFLAG = False
 while not NUMSFLAG:
-	try:
-		nums = [5,7,435,4]
+	nums = []
+	print("Please enter how long you want the list to be:")
+	x = int(input())
+	print("Please input each number one at a time:")
+	for i in range(0,x): 
+		print("For the {i}st/nd/rd/th number input it here:")
+		n=input()
+		while not Go_Back:
+			try:
+				int(n)
+			except:
+		        	print("Please remember to only use intergers.")
+				Go_Back = True
+		nums.append(n)
 		NUMSFLAG = True
-	except NameError:
-		print("You have an undefined variable. Please try again with NUMBERS")	
-		# call hypothetical generator function here
-		print("Generating a list of 5 integers.")
-		nums = RANDOM_GENERATOR()
-		NUMSFLAG = True
-	except:
-		("Remember to use only NUMBERS and try again.")
+#	except NameError:
+#		print("You have an undefined variable. Please try again with NUMBERS")	
+#		# call hypothetical generator function here
+#		print("Generating a list of 5 integers.")
+#		nums = RANDOM_GENERATOR()
+#		NUMSFLAG = True
+#	except:
+#		("Remember to use only NUMBERS and try again.")
 
 
 find_max(nums)
-
-
-
-
-
-
-
-
-#print("Please enter the list of NUMBERS you wish to find the largest number from: ")
-#user will edit list here
-#nums = [5,7,435,4]
-#####
