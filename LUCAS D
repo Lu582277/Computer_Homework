@@ -1,0 +1,75 @@
+import random
+import time  # so we can randomize the dice roll
+
+# This creates a dictionary in a list to keep track of their names and tokens
+players = [{"Name": "Computer1", "Tokens": 5},
+{"Name": "Computer2", "Tokens": 5},
+{"Name": "Computer3", "Tokens": 5}]
+
+def roll_dice(players):
+    scores = []
+    # This makes a random dice roll for every player
+    for _ in range(0, len(players)):
+        scores.append(random.randint(1, 6) + random.randint(1, 6))
+    return scores
+
+scores = roll_dice(players)
+
+# This gets the winner of the round
+def get_round_winner(scores):
+    max_number = 0
+    winner = 0
+    # This sorts through the scores until it finds the score that is the max
+    for i in range(len(scores)):
+        if scores[i] > max_number:
+            max_number = scores[i]
+            winner = i
+    return winner
+
+# This updates the tokens based on who won
+def update_tokens(winner, players):
+    players[winner]["Tokens"] += len(players)
+    for i in players:
+        i["Tokens"] -= 1
+    # This removes the players once they have 0 tokens.
+        if i["Tokens"] == 0:
+            players.remove(i)
+
+def print_scores(scores, winner):
+    for i in range(len(players)):
+        print(f"{players[i]['Name']}'s tokens are = {players[i]['Tokens']}")
+
+def start_game(players, roll_dice, print_scores, get_round_winner, scores, update_tokens):
+    # This makes players enter how many people are playing
+    num_of_players = int(input("Enter the number of players (1-3): "))
+    
+    player_input = False
+    numbers = [1, 2, 3]
+    if num_of_players in numbers:
+        player_input = True
+    else:
+        while not player_input:
+            num_of_players = int(input("try again numbers 1, 2, or 3:"))
+            if num_of_players in numbers:
+                player_input = True
+            else:
+                continue
+    
+    for player in range(num_of_players):
+        players[player]["Name"] = input(f'Name of Player {player + 1}: ')
+    
+    while len(players) > 1:
+        scores = roll_dice(players)
+        winner = get_round_winner(scores)
+        update_tokens(winner, players)
+        print_scores(scores, winner)
+    
+
+start_game(players, roll_dice, print_scores, get_round_winner, scores, update_tokens)
+
+
+
+
+
+
+
