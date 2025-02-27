@@ -1,89 +1,78 @@
-#sowe can randomize the dice roll
 import random
 import time
 
-# This creates a dictionary in a list to keep track of their names and tokens
-players = [{"Name": "Computer1", "Tokens": 5}, 
-{"Name": "Computer2", "Tokens": 5}, 
-{"Name": "Computer3", "Tokens": 5}]
+players = [{"Name": "Computer1", "Tokens": 5},
+           {"Name": "Computer2", "Tokens": 5},
+           {"Name": "Computer3", "Tokens": 5}]
 
-def roll_dice(players): 
+def roll_dice(players):
     scores = []
-    # This makes a random dice roll for every player
-    for i in range(len(players)): 
-       dice = random.randint(1, 6) + random.randint(1, 6)
-#since I needed the roll to be a variable for printing it I made it easier to see and just did the scores.append to that variable
-       scores.append(dice)
-#this will print the randomized roll
-       print(f"The roll for {players[i]['Name']} was ..{dice}")
+    for i in range(len(players)):
+        dice = random.randint(1, 6) + random.randint(1, 6)
+        scores.append(dice)
+        print(f"The roll for {players[i]['Name']} was ..{dice}")
     return scores
 
-scores = roll_dice(players)
-
-# This gets the winner of the round
-def get_round_winner(scores): 
+# Changed parameter name to 'scores' for clarity
+def get_round_winner(scores, players):
     max_number = 0
     winner = 0
-    # This sorts through the scores until it finds the score that is the max
-    for i in range(len(scores)): 
-        if scores[i] > max_number: 
+    for i in range(len(scores)):
+        if scores[i] > max_number:
             max_number = scores[i]
             winner = i
-#made it so it prints the winner of each round you can delete this
     print(f"The winner of this round is: {players[winner]['Name']}")
     return winner
 
-# This updates the tokens based on who won
-def update_tokens(winner, players): 
-#changed this so it would do it correctly
-    players[winner]["Tokens"] += len(players)
-    for i in players.copy(): #copy helps safely remove items
-        i["Tokens"] -= 1
-        # This removes the players once they have 0 tokens.
-        if i["Tokens"] == 0: 
-            players.remove(i)
+def update_tokens(winner, players):
+    winner_player = players[winner]
+    winner_player["Tokens"]+=len(players)-1
+    
+    player_remove=[]
+    for player in players:
+        if player != winner_player:
+            player["Tokens"]-=1
+            if player["Tokens"]==0:
+                player_remove.append(player)
+                
+    
+    for player in player_remove:
+        players.remove(player)
+    
+    
+    
+    
+    #players[winner]["Tokens"] += len(players) - 1  # Changed to len(players) - 1
+    #for i in players.copy():
+     #   if i != players[winner]:  # Don't deduct from the winner
+      #      i["Tokens"] -= 1
+       # if i["Tokens"] == 0:
+        #    players.remove(i)
 
-def print_scores(scores, winner): 
-    for i in range(len(players)): 
+# Removed unnecessary parameters
+def print_scores(players):
+    for i in range(len(players)):
         print(f"{players[i]['Name']}'s tokens are = {players[i]['Tokens']}")
 
-def start_game(players, roll_dice, print_scores, get_round_winner, scores, update_tokens): 
-    # This makes players enter how many people are playing
-#needed to change how this was done so it could be error checked properly
+def start_game(players):
     print("Enter the number of players (1-3): ")
-    num_of_players = input("")
+    num_of_players = int(input(""))
     
-    player_input = False
-#added spaces between the numbers
-    numbers = [1, 2, 3]
-    if num_of_players in numbers:
-#error check
-        int(num_of_players)
-        player_input = True
-    else: 
-        while not player_input: 
-            num_of_players = int(input("try again numbers 1, 2, or 3: "))
-            if num_of_players in numbers: 
-                player_input = True
-            else: 
-                continue
+    while num_of_players not in [1, 2, 3]:
+        num_of_players = int(input("Try again numbers 1, 2, or 3: "))
     
-    for player in range(num_of_players): 
+    for player in range(num_of_players):
         players[player]["Name"] = input(f'Name of Player {player + 1}: ')
     
-    while len(players) > 1: 
-#got rid of the losers thing because it wasnt doing anything
+    while len(players) > 1:
         scores = roll_dice(players)
-        winner = get_round_winner(scores)
+        winner = get_round_winner(scores, players)
         update_tokens(winner, players)
-        print_scores(scores, winner)
-#prints to show who won the game
-    if len(players) == 1: 
+        print_scores(players)
+    if len(players) == 1:
         print(f"The final winner is..{players[0]['Name']}")
 
-start_game(players, roll_dice, print_scores, get_round_winner, scores, update_tokens)
-
-
+start_game(players)
 
 
 
