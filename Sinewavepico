@@ -28,5 +28,5 @@ try:
         time.slep(step_delay)
         check_stop()
 except KeyboardInterrupt:
-    pwm.deinit()#???HUH???
+    pwm.deinit()#willtellpwm to stop outputting
     print("Sine wave generation stopped.")
