@@ -1,0 +1,3 @@
+from machine import Pin #will work to import machine but this is just cleaner
+
+input_a = Pin(14, Pin.IN, Pin.PULL_DOWN)
