@@ -1,0 +1,32 @@
+import machine
+import math
+import time
+
+PWM_PIN_NUMBER = 15
+PWM_FREQUENCY = 1000
+
+SINE_FREQ = 50
+AMPLITUDE = 32767
+
+OFFSET = 32768
+TABLE_SIZE = 100
+
+pwm =machine.PWM(machine.Pin(PWM_PIN_NUMBER))
+pwm.freq(PWM_FREQUENCY)
+pwm.duty_u16(OFFSET)
+
+step_delay = 1 / (SINE_FREQ * 100)
+
+print("Starting sine wave generation using math.sin...")
+try:
+    t = 0
+    while True:
+        sine_value = math.sin(2 * math.pi * SINE_FREQ * t)
+        duty = int(OFFSET +(AMPLITUDE * sine_value))
+        pwm.duty_u16(duty)
+        t += step_delay
+        time.slep(step_delay)
+        check_stop()
+except KeyboardInterrupt:
+    pwm.deinit()#???HUH???
+    print("Sine wave generation stopped.")
