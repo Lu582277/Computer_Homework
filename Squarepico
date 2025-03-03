@@ -1,0 +1,12 @@
+import machine
+import time
+
+def generate_pwm_wave(pin_num, frequency, duty_cycle):
+    pwm = machine.PWM(machine.Pin(pin_num))
+    pwm.freq(frequency)
+    pwm.duty_u16(int(duty_cycle*65535 / 100))
+
+generate_pwm_wave(pin_num=15, frequency=1000, duty_cycle=50)
+
+while True:
+    check_stop()#?????????what?does?this?mean?????????
