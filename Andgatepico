@@ -1,3 +1,14 @@
 from machine import Pin
 
-input_A = Pin(14, Pin.IN, Pin.PULL_DOWN)
+input_a = Pin(15, Pin.IN, Pin.PULL_DOWN)
+input_b = Pin(14, Pin.IN, Pin.PULL_DOWN)
+input_c = Pin(13, Pin.IN, Pin.PULL_DOWN)
+input_d = Pin(12, Pin.IN, Pin.PULL_DOWN)
+
+A = input_a.value()
+B = input_b.value()
+C = input_c.value()
+D = input_d.value()
+
+result = (ABC)+(ADC)+(ADB)
+
