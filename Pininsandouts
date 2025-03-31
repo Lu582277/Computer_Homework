@@ -8,18 +8,6 @@ lop = [
     D = Pin(18, Pin.IN)
 ]
 
-
-#assigning names and values to the pins
-#Pinouts= [ 
-#    a = Pin(0, Pin.OUT),
-#    b = Pin(1, Pin.OUT),
-#    c = Pin(2, Pin.OUT),
-#    d = Pin(3, Pin.OUT),
-#    e = Pin(4, Pin.OUT),
-#    f = Pin(5, Pin.OUT),
-#    g = Pin(6, Pin.OUT)
-#]
-
 # try Pinout list without names??
 Pinouts = [
     Pin(0, Pin.OUT),
@@ -180,9 +168,9 @@ while allwayson == True:
             Pinouts(1).value = digit_map(15(1))
             Pinouts(2).value = digit_map(15(2))
             Pinouts(3).value = digit_map(15(3))
-            Pinouts(4).
-
-
+            Pinouts(4).value = digit_map(15(4))
+            Pinouts(5).value = digit_map(15(5))
+            Pinouts(6).value = digit_map(15(6))
 
 
 #for x in digit_map:
