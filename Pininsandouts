@@ -1,0 +1,88 @@
+#Lucas Brimenzi 3/26/2025
+import machine
+import utime
+listofpinins = [
+    A = Pin(21, Pin.IN),
+    B = Pin(20, Pin.IN),
+    C = Pin(19, Pin.IN),
+    D = Pin(18, Pin.IN)
+]
+
+
+#assigning names and values to the pins
+#Pinouts= [ 
+#    a = Pin(0, Pin.OUT),
+#    b = Pin(1, Pin.OUT),
+#    c = Pin(2, Pin.OUT),
+#    d = Pin(3, Pin.OUT),
+#    e = Pin(4, Pin.OUT),
+#    f = Pin(5, Pin.OUT),
+#    g = Pin(6, Pin.OUT)
+#]
+
+# try Pinout list without names??
+Pinouts = [
+    Pin(0, Pin.OUT),
+    Pin(1, Pin.OUT),
+    Pin(2, Pin.OUT),
+    Pin(3, Pin.OUT),
+    Pin(4, Pin.OUT),
+    Pin(5, Pin.OUT),
+    Pin(6, Pin.OUT)
+]
+
+
+#truthtable used for certian pins to go on and off
+digit_map =[
+    [1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 1, 0, 0, 0, 0],
+    [1, 1, 0, 1, 1, 0, 1],
+    [1, 1, 1, 1, 0, 0, 1],
+    [0, 1, 1, 0, 0, 1, 1],
+    [1, 0, 1, 1, 0, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 0, 1, 1],
+    [1, 1, 1, 0, 1, 1, 1],
+    [0, 0, 1, 1, 1, 1, 1],
+    [1, 0, 0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 1, 0, 1],
+    [1, 1, 0, 0, 0, 1, 1]
+]
+
+#main code looping through digit map and assigning each to a variable
+allwayson = True
+while allwayson == True:
+    for x in digit_map
+        if A+B+C+D == 0: # lily: update pin on/off using current_map (the current row in digit_map)
+            Pinouts(0).value = digit_map(0(0))
+            Pinouts(1).value = digit_map(0(1))
+            Pinouts(2).value = digit_map(0(2))
+            Pinouts(3).value = digit_map(0(3))
+            Pinouts(4).value = digit_map(0(4))
+            Pinouts(5).value = digit_map(0(5))
+            Pinouts(6).value = digit_map(0(6))
+            Pinouts(7).value = digit_map(0(7))
+        elif A+B+C == 0 and D == 1: # lily: what will go here?
+            Pinouts(0).value = digit_map(1(0))
+            Pinouts(1).value = digit_map(1(1))
+
+        elif A+B+D == 0 and C = 1: # lily: what will go here?
+            
+        elif A+B = 0 and C+C = 1: # lily: what will go here?
+#for x in digit_map:
+ #   a.value(x[0])
+  #  utime.sleep(1)
+   # b.value(x[1])
+ #   utime.sleep(1)
+  #  c.value(x[2])
+   # utime.sleep(1)
+    #d.value(x[3])
+   # utime.sleep(1)
+   # e.value(x[4])
+   # utime.sleep(1)
+    #f.value(x[5])
+   # utime.sleep(1)
+    #g.value(x[6])
+   # utime.sleep(1)
