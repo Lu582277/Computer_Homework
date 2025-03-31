@@ -1,7 +1,7 @@
 #Lucas Brimenzi 3/26/2025
 import machine
 import utime
-listofpinins = [
+lop = [
     A = Pin(21, Pin.IN),
     B = Pin(20, Pin.IN),
     C = Pin(19, Pin.IN),
@@ -55,7 +55,7 @@ digit_map =[
 allwayson = True
 while allwayson == True:
     for x in digit_map
-        if A+B+C+D == 0: # lily: update pin on/off using current_map (the current row in digit_map)
+        if lop(0)+lop(1)+lop(2)+lop(3) == 0:
             Pinouts(0).value = digit_map(0(0))
             Pinouts(1).value = digit_map(0(1))
             Pinouts(2).value = digit_map(0(2))
@@ -64,13 +64,26 @@ while allwayson == True:
             Pinouts(5).value = digit_map(0(5))
             Pinouts(6).value = digit_map(0(6))
             Pinouts(7).value = digit_map(0(7))
-        elif A+B+C == 0 and D == 1: # lily: what will go here?
+        elif lop(0)+lop(1)+lop(2) == 0 and lop(3) == 1:
             Pinouts(0).value = digit_map(1(0))
             Pinouts(1).value = digit_map(1(1))
-
-        elif A+B+D == 0 and C = 1: # lily: what will go here?
-            
-        elif A+B = 0 and C+C = 1: # lily: what will go here?
+            Pinouts(2).value = digit_map(1(2))
+            Pinouts(3).value = digit_map(1(3))
+            Pinouts(4).value = digit_map(1(4))
+            Pinouts(5).value = digit_map(1(5))
+            Pinouts(6).value = digit_map(1(6))
+            Pinouts(7).value = digit_map(1(7))
+        elif lop(0)+lop(1)+lop(3) == 0 and lop(2) = 1:
+            Pinouts(0).value = digit_map(2(0))
+            Pinouts(1).value = digit_map(2(1))
+            Pinouts(2).value = digit_map(2(2))
+            Pinouts(3).value = digit_map(2(3))
+            Pinouts(4).value = digit_map(2(4))
+            Pinouts(5).value = digit_map(2(5))
+            Pinouts(6).value = digit_map(2(6))
+            Pinouts(7).value = digit_map(2(7))
+        elif lop(0)+lop(1) = 0 and lop(2)+lop(3) = 2:
+            Pinouts(0).value = digit_map
 #for x in digit_map:
  #   a.value(x[0])
   #  utime.sleep(1)
