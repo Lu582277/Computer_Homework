@@ -194,4 +194,4 @@ while allwayson == True:
             Pinouts[4].value(digit_map[15][4])
             Pinouts[5].value(digit_map[15][5])
             Pinouts[6].value(digit_map[15][6])
-    #check_stop() #? what does this do? 
+    check_stop() #? what does this do? 
