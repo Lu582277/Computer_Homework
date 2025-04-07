@@ -1,0 +1,197 @@
+#Lucas Brimenzi 3/26/2025
+import machine
+import utime
+
+lop = [
+    A = Pin(21, Pin.IN),
+    B = Pin(20, Pin.IN),
+    C = Pin(19, Pin.IN),
+    D = Pin(18, Pin.IN)
+]
+
+# list assigning names and values to the pins
+
+Pinouts = [
+    Pin(0,Pin.OUT),
+    Pin(1,Pin.OUT),
+    Pin(2,Pin.OUT),
+    Pin(3,Pin.OUT),
+    Pin(4,Pin.OUT),
+    Pin(5,Pin.OUT),
+    Pin(6,Pin.OUT)
+]
+
+#a = Pin(0, Pin.OUT)
+#a.value(0)
+
+#b = Pin(1, Pin.OUT)
+#b.value(0)
+
+#c = Pin(2, Pin.OUT)
+#c.value(0)
+
+#d = Pin(3, Pin.OUT)
+#d.value(0)
+
+#e = Pin(4, Pin.OUT)
+#e.value(0)
+
+#f = Pin(5, Pin.OUT)
+#f.value(0)
+
+#g = Pin(6, Pin.OUT)
+#g.value(0)
+
+#truthtable used for certian pins to go on and off
+digit_map =[
+    [1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 1, 0, 0, 0, 0],
+    [1, 1, 0, 1, 1, 0, 1],
+    [1, 1, 1, 1, 0, 0, 1],
+    [0, 1, 1, 0, 0, 1, 1],
+    [1, 0, 1, 1, 0, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 0, 1, 1],
+    [1, 1, 1, 0, 1, 1, 1],
+    [0, 0, 1, 1, 1, 1, 1],
+    [1, 0, 0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 1, 0, 1],
+    [1, 1, 0, 0, 0, 1, 1]
+]
+
+#main code looping through digit map and assigning each to a variable
+allwayson = True
+
+while allwayson == True:
+    for x in digit_map:
+        if lop[0]+lop[1]+lop[2]+lop[3]==0: 
+            Pinouts[0].value(digit_map[0][0])
+            Pinouts[1].value(digit_map[0][1])
+            Pinouts[2].value(digit_map[0][2])
+            Pinouts[3].value(digit_map[0][3])
+            Pinouts[4].value(digit_map[0][4])
+            Pinouts[5].value(digit_map[0][5])
+            Pinouts[6].value(digit_map[0][6])
+        elif lop[0]+lop[1]+lop[2]==0 and lop[3]==1:
+            Pinouts[0].value(digit_map[1][0])
+            Pinouts[1].value(digit_map[1][1])
+            Pinouts[2].value(digit_map[1][2])
+            Pinouts[3].value(digit_map[1][3])
+            Pinouts[4].value(digit_map[1][4])
+            Pinouts[5].value(digit_map[1][5])
+            Pinouts[6].value(digit_map[1][6])
+        elif lop[0]+lop[1]+lop[3]==0 and lop[2]==1:
+            Pinouts[0].value(digit_map[2][0])
+            Pinouts[1].value(digit_map[2][1])
+            Pinouts[2].value(digit_map[2][2])
+            Pinouts[3].value(digit_map[2][3])
+            Pinouts[4].value(digit_map[2][4])
+            Pinouts[5].value(digit_map[2][5])
+            Pinouts[6].value(digit_map[2][6])
+        elif lop[0]+lop[1]==0 and lop[2]+lop[3]==2:
+            Pinouts[0].value(digit_map[3][0])
+            Pinouts[1].value(digit_map[3][1])
+            Pinouts[2].value(digit_map[3][2])
+            Pinouts[3].value(digit_map[3][3])
+            Pinouts[4].value(digit_map[3][4])
+            Pinouts[5].value(digit_map[3][5])
+            Pinouts[6].value(digit_map[3][6])
+        elif lop[0]+lop[3]+lop[2]==0 and lop[1]==1:
+            Pinouts[0].value(digit_map[4][0])
+            Pinouts[1].value(digit_map[4][1])
+            Pinouts[2].value(digit_map[4][2])
+            Pinouts[3].value(digit_map[4][3])
+            Pinouts[4].value(digit_map[4][4])
+            Pinouts[5].value(digit_map[4][5])
+            Pinouts[6].value(digit_map[4][6])
+        elif lop[0]+lop[2]==0 and lop[1]+lop[3]==2:
+            Pinouts[0].value(digit_map[5][0])
+            Pinouts[1].value(digit_map[5][1])
+            Pinouts[2].value(digit_map[5][2])
+            Pinouts[3].value(digit_map[5][3])
+            Pinouts[4].value(digit_map[5][4])
+            Pinouts[5].value(digit_map[5][5])
+            Pinouts[6].value(digit_map[5][6])
+        elif lop[0]+lop[3]==0 and lop[1]+lop[2]==2:
+            Pinouts[0].value(digit_map[6][0])
+            Pinouts[1].value(digit_map[6][1])
+            Pinouts[2].value(digit_map[6][2])
+            Pinouts[3].value(digit_map[6][3])
+            Pinouts[4].value(digit_map[6][4])
+            Pinouts[5].value(digit_map[6][5])
+            Pinouts[6].value(digit_map[6][6])
+        elif lop[0]==0 and lop[1]+lop[2]+lop[3]==3:
+            Pinouts[0].value(digit_map[7][0])
+            Pinouts[1].value(digit_map[7][1])
+            Pinouts[2].value(digit_map[7][2])
+            Pinouts[3].value(digit_map[7][3])
+            Pinouts[4].value(digit_map[7][4])
+            Pinouts[5].value(digit_map[7][5])
+            Pinouts[6].value(digit_map[7][6])
+        elif lop[0]==1 and lop[1]+lop[2]+lop[3]==0:
+            Pinouts[0].value(digit_map[8][0])
+            Pinouts[1].value(digit_map[8][1])
+            Pinouts[2].value(digit_map[8][2])
+            Pinouts[3].value(digit_map[8][3])
+            Pinouts[4].value(digit_map[8][4])
+            Pinouts[5].value(digit_map[8][5])
+            Pinouts[6].value(digit_map[8][6])
+        elif lop[0]+lop[3]==2 and lop[1]+lop[2]==0:
+            Pinouts[0].value(digit_map[5][0])
+            Pinouts[1].value(digit_map[9][1])
+            Pinouts[2].value(digit_map[9][2])
+            Pinouts[3].value(digit_map[9][3])
+            Pinouts[4].value(digit_map[9][4])
+            Pinouts[5].value(digit_map[9][5])
+            Pinouts[6].value(digit_map[9][6])
+        elif lop[0]+lop[2]==2 and lop[1]+lop[3]==0:
+            Pinouts[0].value(digit_map[10][0])
+            Pinouts[1].value(digit_map[10][1])
+            Pinouts[2].value(digit_map[10][2])
+            Pinouts[3].value(digit_map[10][3])
+            Pinouts[4].value(digit_map[10][4])
+            Pinouts[5].value(digit_map[10][5])
+            Pinouts[6].value(digit_map[10][6])
+        elif lop[1]==0 and lop[0]+lop[2]+lop[3]==3:
+            Pinouts[0].value(digit_map[11][0])
+            Pinouts[1].value(digit_map[11][1])
+            Pinouts[2].value(digit_map[11][2])
+            Pinouts[3].value(digit_map[11][3])
+            Pinouts[4].value(digit_map[11][4])
+            Pinouts[5].value(digit_map[11][5])
+            Pinouts[6].value(digit_map[11][6])
+        elif lop[0]+lop[1]==2 and lop[3]+lop[2]==3:
+            Pinouts[0].value(digit_map[12][0])
+            Pinouts[1].value(digit_map[12][1])
+            Pinouts[2].value(digit_map[12][2])
+            Pinouts[3].value(digit_map[12][3])
+            Pinouts[4].value(digit_map[12][4])
+            Pinouts[5].value(digit_map[12][5])
+            Pinouts[6].value(digit_map[12][6])
+        elif lop[0]+lop[1]+lop[3]==3 and lop[2]==0:
+            Pinouts[0].value(digit_map[13][0])
+            Pinouts[1].value(digit_map[13][1])
+            Pinouts[2].value(digit_map[13][2])
+            Pinouts[3].value(digit_map[13][3])
+            Pinouts[4].value(digit_map[13][4])
+            Pinouts[5].value(digit_map[13][5])
+            Pinouts[6].value(digit_map[13][6])
+        elif lop[0]+lop[1]+lop[2]==3 and lop[3]==0:
+            Pinouts[0].value(digit_map[14][0])
+            Pinouts[1].value(digit_map[14][1])
+            Pinouts[2].value(digit_map[14][2])
+            Pinouts[3].value(digit_map[14][3])
+            Pinouts[4].value(digit_map[14][4])
+            Pinouts[5].value(digit_map[14][5])
+            Pinouts[6].value(digit_map[14][6])
+        elif lop[0]+lop[1]+lop[2]+lop[3]==4:
+            Pinouts[0].value(digit_map[15][0])
+            Pinouts[1].value(digit_map[15][1])
+            Pinouts[2].value(digit_map[15][2])
+            Pinouts[3].value(digit_map[15][3])
+            Pinouts[4].value(digit_map[15][4])
+            Pinouts[5].value(digit_map[15][5])
+            Pinouts[6].value(digit_map[15][6])
+    #check_stop() #? what does this do? 
